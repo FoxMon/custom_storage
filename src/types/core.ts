@@ -4,7 +4,6 @@ export namespace Core {
   }
 
   export interface CoreStorageType {
-    length: () => number;
     clear: () => void;
     getItem: (key: string) => string | null;
     setItem: (key: string, value: string) => void;
