@@ -26,4 +26,5 @@ class CoreStorage implements Core.CoreStorageType {
   }
 }
 
+Object.freeze(CoreStorage);
 export default CoreStorage;
