@@ -4,7 +4,6 @@
     "module": "es2020",
     "removeComments": true,
     "declaration": true,
-    "outDir": "./dist",
     "preserveConstEnums": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
@@ -12,6 +11,5 @@
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.temp.ts"]
+  "include": ["src"]
 }
