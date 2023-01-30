@@ -1,0 +1,13 @@
+export namespace Core {
+  export interface CoreStorageDataType {
+    [key: string]: any;
+  }
+
+  export interface CoreStorageType {
+    length: () => number;
+    clear: () => void;
+    getItem: (key: string) => string | null;
+    setItem: (key: string, value: string) => void;
+    removeItem: (key: string) => void;
+  }
+}
