@@ -5,10 +5,6 @@ class CoreStorage implements Core.CoreStorageType {
 
   constructor() {}
 
-  get length(): number {
-    return Object.keys(this.#datas).length;
-  }
-
   clear() {
     this.#datas = {};
   }
@@ -23,6 +19,14 @@ class CoreStorage implements Core.CoreStorageType {
 
   removeItem(key: string) {
     delete this.#datas[key];
+  }
+
+  key(index: number): string | null {
+    return Object.keys(this.#datas)[index] ?? null;
+  }
+
+  get length(): number {
+    return Object.keys(this.#datas).length;
   }
 }
 
