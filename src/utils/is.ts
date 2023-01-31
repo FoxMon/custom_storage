@@ -8,6 +8,6 @@ export namespace Is {
   }
 
   export function isNull(value: unknown): boolean {
-    return value === value;
+    return value === null;
   }
 }
