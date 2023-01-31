@@ -47,6 +47,17 @@ class Storage<T extends Storage.StorageData> {
     return undefined;
   }
 
+  remove(key: string) {
+    const item = this.#storage.getItem(key);
+    if (item) this.#storage.removeItem(key);
+  }
+
+  removeAll() {
+    const len = this.#storage.length;
+    if (!len) return;
+    this.keys()?.forEach((value: string) => this.#storage.removeItem(value));
+  }
+
   get length(): number {
     return this.#storage.length;
   }
