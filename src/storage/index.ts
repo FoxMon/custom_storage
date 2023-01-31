@@ -9,10 +9,6 @@ class Storage<T extends Storage.StorageData> {
     this.#storage = storage;
   }
 
-  get length(): number {
-    return this.#storage.length;
-  }
-
   value(key: keyof T): string | undefined {
     const item = this.#storage.getItem(key as string);
     if (Is.isNull(item)) return undefined;
@@ -22,7 +18,12 @@ class Storage<T extends Storage.StorageData> {
   keys(): Array<string> | undefined {
     const len: number = this.#storage.length;
     if (!len) return undefined;
-    return Object.keys(this.#storage);
+    const keyArr: Array<string> = [];
+    for (let i = 0; i < len; i++) {
+      const key = this.#storage.key(i);
+      if (!Is.isNull(key)) keyArr.push(key as string);
+    }
+    return keyArr;
   }
 
   values(): Array<string> | undefined {
@@ -34,6 +35,24 @@ class Storage<T extends Storage.StorageData> {
       if (item) valueArr.push(item);
     });
     return valueArr;
+  }
+
+  set(key: string, value: string) {
+    this.#storage.setItem(key, value);
+  }
+
+  get(key: string): string | undefined {
+    const item = this.#storage.getItem(key);
+    if (!Is.isNull(item)) return item as string;
+    return undefined;
+  }
+
+  get length(): number {
+    return this.#storage.length;
+  }
+
+  static asInMemory<T extends Storage.StorageData>() {
+    return new Storage<T>(new CoreStorage());
   }
 }
 
