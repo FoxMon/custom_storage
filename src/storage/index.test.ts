@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import Storage from "./index";
 
-describe("Storage test", () => {
+describe("In memory storage test", () => {
   it("Create Storage and Storage length test", () => {
     const st = Storage.asInMemory();
     st.set("A", "Data-A");
