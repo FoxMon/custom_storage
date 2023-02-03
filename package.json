@@ -1,5 +1,5 @@
 {
-  "name": "custom_storage",
+  "name": "@foxmon/storage",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
