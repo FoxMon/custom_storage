@@ -3,9 +3,9 @@ import { Storage } from "../types/storage";
 import { Is } from "../utils/is";
 
 class Storage<T extends Storage.StorageData> {
-  #storage: CoreStorage;
+  #storage: globalThis.Storage | CoreStorage;
 
-  constructor(storage: CoreStorage) {
+  constructor(storage: globalThis.Storage | CoreStorage) {
     this.#storage = storage;
   }
 
@@ -55,7 +55,7 @@ class Storage<T extends Storage.StorageData> {
   removeAll() {
     const len = this.#storage.length;
     if (!len) return;
-    this.keys()?.forEach((value: string) => this.#storage.removeItem(value));
+    this.#storage.clear();
   }
 
   get length(): number {
@@ -64,6 +64,14 @@ class Storage<T extends Storage.StorageData> {
 
   static asInMemory<T extends Storage.StorageData>() {
     return new Storage<T>(new CoreStorage());
+  }
+
+  static asSessionMemory<T extends globalThis.Storage>() {
+    return new Storage<T>(sessionStorage);
+  }
+
+  static asLocalMemory<T extends globalThis.Storage>() {
+    return new Storage<T>(localStorage);
   }
 }
 
