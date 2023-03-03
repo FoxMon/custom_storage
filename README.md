@@ -2,6 +2,10 @@
 
 Custom simple storage
 
+```
+npm i @foxmon/storage
+```
+
 ## sessionStorage, localStorage, memoryStorage
 
 ---
